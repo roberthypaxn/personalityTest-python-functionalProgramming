@@ -183,31 +183,78 @@ def nomenclature(Introversion, Extraversion, Sensing, Intuition, Thinking, Feeli
     to a user by using their traits"""
     if Introversion > Extraversion:
         Attitude = "INTROVERT"
+        counter_att = "EXTROVERT"
+        Attitude_perc = (Introversion/10)*100
+        Attitude_perc = round(Attitude_perc, 1)
     if Introversion < Extraversion:
         Attitude = "EXTROVERT"
+        counter_att = "INTROVERT"
+        Attitude_perc = (Extraversion/10)*100
+        Attitude_perc = round(Attitude_perc, 1)
     if Introversion == Extraversion:
-        Attitude = "AMBIVERT"
+        Attitude = "EXTROVERT"
+        counter_att = "INTROVERT"
+        Attitude_perc = 50
+        Attitude_perc = round(Attitude_perc, 1)
     if Sensing > Intuition:
         Learning = "OBSERVER"
+        counter_lea = "INTUITIVE"
+        Learning_perc = (Sensing/20)*100
+        Learning_perc = round(Learning_perc, 1)
     if Sensing < Intuition:
         Learning = "INTUITIVE"
+        counter_lea = "OBSERVER"
+        Learning_perc = (Intuition/20)*100
+        Learning_perc = round(Learning_perc, 1)
     if Sensing == Intuition:
-        Learning = "UNKNOWN"
+        Learning = "INTUITIVE"
+        counter_lea = "OBSERVER"
+        Learning_perc = 50
+        Learning_perc = round(Learning_perc, 1)
     if Thinking > Feeling:
         Deciding = "THINKER"
+        counter_dec = "FEELER"
+        Deciding_perc = (Thinking/20)*100
+        Deciding_perc = round(Deciding_perc, 1)
     if Thinking < Feeling:
         Deciding = "FEELER"
+        counter_dec = "THINKER"
+        Deciding_perc = (Feeling/20)*100
+        Deciding_perc = round(Deciding_perc, 1)
     if Thinking == Feeling:
-        Deciding= "UNKNOWN"
+        Deciding = "FEELER"
+        counter_dec = "THINKER"
+        Deciding_perc = 50
     if Judging > Perceiving:
         Strategy = "JUDGER"
+        counter_strat = "PERCEIVER"
+        Strategy_perc = (Judging/20)*100
+        Strategy_perc = round(Strategy_perc, 1)
     if Judging < Perceiving:
         Strategy = "PERCEIVER"
+        counter_strat = "JUDGER"
+        Strategy_perc = (Perceiving/20)*100
+        Strategy_perc = round(Strategy_perc, 1)
     if Judging == Perceiving:
-        Strategy = "UNKNOWN"
+        Strategy = "PERCEIVER"
+        counter_strat = "JUDGER"
+        Strategy_perc = 50
     print("--------------------------------------------------")
-    print(f"◉ ‿ ◉ You are: {Attitude} {Learning} {Deciding} {Strategy}")
+    print("              How you ◉ ‿ ◉ are:")
     print("--------------------------------------------------")
+    print(f"      {Attitude}       |       {counter_att}")
+    print(f"          {Attitude_perc}%                     {100-Attitude_perc}%")
+    print("--------------------------------------------------")
+    print(f"      {Learning}       |       {counter_lea}")
+    print(f"          {Learning_perc}%                     {100-Learning_perc}%")
+    print("--------------------------------------------------")
+    print(f"         {Deciding}       |       {counter_dec}")
+    print(f"          {Deciding_perc}%                     {100-Deciding_perc}%")
+    print("--------------------------------------------------")
+    print(f"      {Strategy}       |       {counter_strat}")
+    print(f"          {Strategy_perc}%                     {100-Strategy_perc}%")
+    print("--------------------------------------------------")
+
     return Attitude, Learning, Deciding, Strategy
 
 def personality(ATTITUDE, LEARNING, DECISION, STRATEGY):
@@ -253,35 +300,34 @@ def personality(ATTITUDE, LEARNING, DECISION, STRATEGY):
 def cognitive_functions(ATTITUDE, LEARNING, DECISION, STRATEGY):
     """This function uses the data of personality traits to
     decuce and provide a user with cognitive functions of 
-    their mind and an expalnation of these functions"""
-    print("--------------------------------------------------")
-    print("--------------------------------------------------")
-    print("★ If you are Introverted, the cognitive function you use\nfirst is also an introverted function.")
+    they are perdisposed to have and an expalnation of these functions"""
+    print("**************************************************")
+    print("✯ If you are Introverted, the cognitive function you use\nfirst is also an introverted function.")
     print()
-    print("★ If you are Extroverted, the cognitive function you use\nfirst is also an Extroverted function.")
-    print("--------------------------------------------------")
-    print("--------------------------------------------------")
+    print("✯ If you are Extroverted, the cognitive function you use\nfirst is also an Extroverted function.")
+    to_learn = "★ You use the following process to learn:"
+    to_decide = "★ You use the following process to make decisions:"
     if ATTITUDE == "INTROVERT" and STRATEGY == "PERCEIVER":
             if DECISION == "THINKER":
                 TP = "Introverted Thinking [Ti]:\n Understanding the nature of causation\nOr\nUnderstanding causation is not correlation.\n Clarity/Accuracy/Truth/Logic"
-                print("\nYou use the following process to make decisions:")
+                print(f"\n{to_decide}:")
                 print("--------------------------------------------------")
                 print(TP)
             elif DECISION == "FEELER":
                 FP = "Introverted Feeling [Fi]:\n Understanding emotions and values of the self and acting accordingly\n Authenticity/Knowing good and bad"
-                print("\nYou use the following process to make decisions:")
+                print(f"\n{to_learn}:")
                 print("--------------------------------------------------")
                 print(FP)
                 print()
             if LEARNING == "INTUITIVE":
                 NP = "Extroverted Intuition [Ne]:\n Using information to create something new.\n Asks 'WHAT IF?'"
-                print("\nYou use the following process to learn:")
+                print(f"\n{to_learn}:")
                 print("--------------------------------------------------")
                 print(NP)
                 print()
             elif LEARNING == "OBSERVER":
                 SP = "Extroverted Sensing [Se]:\n Being ready to respond to spontaneity and surprising experience/Being physically and mentaly ready. \n Physical Sensitivity/Perpetual Observing"
-                print("\nYou use the following process to learn:")
+                print(f"\n{to_learn}:")
                 print("--------------------------------------------------")
                 print(SP)
                 print()
@@ -289,25 +335,25 @@ def cognitive_functions(ATTITUDE, LEARNING, DECISION, STRATEGY):
     elif ATTITUDE == "EXTROVERT" and STRATEGY == "PERCEIVER":
         if LEARNING == "INTUITIVE":
             NP = "Extroverted Intuition [Ne]:\n Using information to create something new.\n Asks 'WHAT IF?'"
-            print("\nYou use the following process to learn:")
+            print(f"\n{to_learn}:")
             print("--------------------------------------------------")
             print(NP)
             print()
         elif LEARNING == "OBSERVER":
             SP = "Extroverted Sensing [Se]:\n Being ready to respond to spontaneity and surprising experience/Being physically and mentaly ready. \n Physical Sensitivity/Perpetual Observing"
-            print("\nYou use the following process to learn:")
+            print(f"\n{to_learn}:")
             print("--------------------------------------------------")
             print(SP)
             print()
         if DECISION == "THINKER":
             TP = "Introverted Thinking [Ti]:\n Understanding the nature of causation\nOr\nUnderstanding causation is not correlation.\n Clarity/Accuracy/Truth/Logic"
-            print("\nYou use the following process to make decisions:")
+            print(f"\n{to_decide}:")
             print("--------------------------------------------------")
             print(TP)
             print()
         elif DECISION == "FEELER":
             FP = "Introverted Feeling [Fi]:\n Understanding emotions and values of the self and acting accordingly\n Authenticity/Knowing good and bad"
-            print("\nYou use the following process to make decisions:")
+            print(f"\n{to_decide}:")
             print("--------------------------------------------------")
             print(FP)
             print()
@@ -315,25 +361,25 @@ def cognitive_functions(ATTITUDE, LEARNING, DECISION, STRATEGY):
     elif ATTITUDE == "EXTROVERT" and STRATEGY == "JUDGER":
         if DECISION == "THINKER":
             TJ = "Extraverted Thinking [Te]:\n Understanding priority\n Organization/Effectiveness/Usefulness"
-            print("\nYou use the following process to make decisions:")
+            print(f"\n{to_decide}:")
             print("--------------------------------------------------")
             print(TJ)
             print()
         elif DECISION == "FEELER":
             FJ = "Extroverted Feeling [Fe]:\n Understanding other people's emotions and acting accordingly\n Harmony/Togetherness"
-            print("\nYou use the following process to make decisions:")
+            print(f"\n{to_decide}:")
             print("--------------------------------------------------")
             print(FJ)
             print()
         if LEARNING == "INTUITIVE":
             NJ = "Introverted Intuition [Ni]:\n Using information to understand what is most probable.\n Asks 'WHY?'"
-            print("\nYou use the following process to learn:")
+            print(f"\n{to_learn}:")
             print("--------------------------------------------------")
             print(NJ)
             print()
         elif LEARNING == "OBSERVER":
             SJ = "Introverted Sensing [Si]:\n Storing useful facts and experience to use later for a desired outcome.\n Protection/Safe-keeing/Memory"
-            print("\nYou use the following process to learn:")
+            print(f"\n{to_learn}:")
             print("--------------------------------------------------")
             print(SJ)
             print()
@@ -341,28 +387,28 @@ def cognitive_functions(ATTITUDE, LEARNING, DECISION, STRATEGY):
     elif ATTITUDE == "INTROVERT" and STRATEGY == "JUDGER":
         if LEARNING == "INTUITIVE":
             NJ = "Introverted Intuition [Ni]:\n Using information to understand what is most probable.\n Asks 'WHY?'"
-            print("\nYou use the following process to learn:")
+            print(f"\n{to_learn}:")
             print("--------------------------------------------------")
             print(NJ)
             print()
         elif LEARNING == "OBSERVER":
             SJ = "Introverted Sensing [Si]:\n Storing useful facts and experience to use later for a desired outcome.\n Protection/Safe-keeing/Memory"
-            print("\nYou use the following process to learn:")
+            print(f"\n{to_learn}:")
             print("--------------------------------------------------")
             print(SJ)
             print()
         if DECISION == "THINKER":
             TJ = "Extraverted Thinking [Te]:\n Understanding priority\n Organization/Effectiveness/Usefulness"
-            print("\nYou use the following process to make decisions:")
+            print(f"\n{to_decide}:")
             print("--------------------------------------------------")
             print(TJ)
             print()
         elif DECISION == "FEELER":
             FJ = "Extroverted Feeling [Fe]:\n Understanding other people's emotions and acting accordingly\n Harmony/Togetherness"
-            print("\nYou use the following process to make decisions:")
+            print(f"\n{to_decide}:")
             print("--------------------------------------------------")
             print(FJ)
-    print("--------------------------------------------------")
+    print("**************************************************")
 
 
 
