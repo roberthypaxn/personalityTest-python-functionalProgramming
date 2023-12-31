@@ -181,68 +181,21 @@ def dichotomy(E_I, S_I, T_F, J_P):
 def nomenclature(Introversion, Extraversion, Sensing, Intuition, Thinking, Feeling, Judging, Perceiving):
     """This function provides the nomenclature of personality
     to a user by using their traits"""
-    if Introversion > Extraversion:
-        Attitude = "INTROVERT"
-        counter_att = "EXTROVERT"
-        Attitude_perc = (Introversion / 10) * 100
-        Attitude_perc = round(Attitude_perc, 1)
-    elif Introversion < Extraversion:
-        Attitude = "EXTROVERT"
-        counter_att = "INTROVERT"
-        Attitude_perc = (Extraversion / 10) * 100
-        Attitude_perc = round(Attitude_perc, 1)
-    else:
-        Attitude = "EXTROVERT"
-        counter_att = "INTROVERT"
-        Attitude_perc = 50
-        Attitude_perc = round(Attitude_perc, 1)
+    Attitude = 'INTROVERT' if Introversion > Extraversion else 'EXTROVERT'
+    counter_att = "EXTROVERT" if Introversion > Extraversion else 'INTROVERT'
+    Attitude_perc = round(100 * (Introversion / 10 if Introversion > Extraversion else Extraversion / 10), 3)
 
-    if Sensing > Intuition:
-        Learning = "OBSERVER"
-        counter_lea = "INTUITIVE"
-        Learning_perc = (Sensing / 20) * 100
-        Learning_perc = round(Learning_perc, 1)
-    elif Sensing < Intuition:
-        Learning = "INTUITIVE"
-        counter_lea = "OBSERVER"
-        Learning_perc = (Intuition / 20) * 100
-        Learning_perc = round(Learning_perc, 1)
-    else:
-        Learning = "INTUITIVE"
-        counter_lea = "OBSERVER"
-        Learning_perc = 50
-        Learning_perc = round(Learning_perc, 1)
+    Learning = 'OBSERVER' if Sensing > Intuition else 'INTUITIVE'
+    counter_lea = 'INTUITIVE' if Sensing > Intuition else 'OBSERVER'
+    Learning_perc = round(100 * (Sensing / 20 if Sensing > Intuition else Intuition / 20), 3)
 
-    if Thinking > Feeling:
-        Deciding = "THINKER"
-        counter_dec = "FEELER"
-        Deciding_perc = (Thinking / 20) * 100
-        Deciding_perc = round(Deciding_perc, 1)
-    elif Thinking < Feeling:
-        Deciding = "FEELER"
-        counter_dec = "THINKER"
-        Deciding_perc = (Feeling / 20) * 100
-        Deciding_perc = round(Deciding_perc, 1)
-    else:
-        Deciding = "FEELER"
-        counter_dec = "THINKER"
-        Deciding_perc = 50
+    Deciding = 'THINKER' if Thinking > Feeling else 'FEELER'
+    counter_dec = 'FEELER' if Thinking > Feeling else 'THINKER'
+    Deciding_perc = round(100 * (Thinking / 20 if Thinking > Feeling else Feeling / 20), 3)
 
-    if Judging > Perceiving:
-        Strategy = "JUDGER"
-        counter_strat = "PERCEIVER"
-        Strategy_perc = (Judging / 20) * 100
-        Strategy_perc = round(Strategy_perc, 1)
-    elif Judging < Perceiving:
-        Strategy = "PERCEIVER"
-        counter_strat = "JUDGER"
-        Strategy_perc = (Perceiving / 20) * 100
-        Strategy_perc = round(Strategy_perc, 1)
-    else:
-        Strategy = "PERCEIVER"
-        counter_strat = "JUDGER"
-        Strategy_perc = 50
-        Strategy_perc = round(Strategy_perc, 1)
+    Strategy = 'JUDGER' if Judging > Perceiving else 'PERCEIVER'
+    counter_strat = 'PERCEIVER' if Judging > Perceiving else 'JUDGER'
+    Strategy_perc = round(100 * (Judging / 20 if Judging > Perceiving else Perceiving / 20), 3)
 
     print("--------------------------------------------------")
     print("              How you ◉ ‿ ◉ are:")
