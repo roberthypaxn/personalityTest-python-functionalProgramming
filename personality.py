@@ -1,7 +1,7 @@
 import csv
 
-def main():
 
+def main():
     # Index of some of the key column
     NUMERATION = 0
 
@@ -52,32 +52,35 @@ def main():
     except NameError as no_dychotomy:
         print()
         print("     Thank you!")
-    
+
     print()
 
 
-def questionnaire(filename,  number):
+def questionnaire(filename, number):
     """This function reads the contents 
     of a CSV file named personality.csv and 
     store it in a dictionary called 'dictionary'."""
     dictionary = {}
 
     try:
-        with open(filename, "rt") as csv_file:    # Open the CSV file for reading and store a reference to the opened file in a variable named csv_file.
-            reader = csv.reader(csv_file)        # Use the csv module to create a reader object that will read from the opened CSV file.
-            next(reader) # skip the first line
+        with open(filename,
+                  "rt") as csv_file:  # Open the CSV file for reading and store a reference to the opened file in a variable named csv_file.
+            reader = csv.reader(
+                csv_file)  # Use the csv module to create a reader object that will read from the opened CSV file.
+            next(reader)  # skip the first line
 
             for row in reader:
                 key = row[number]
-                dictionary [key] = row
+                dictionary[key] = row
     # Return the dictionary.
 
     except FileNotFoundError as not_found_err:
         print()
         print("☉ o☉ !!!  Oh Noooohh!! The questionnaire system is not connected!")
         print()
-    
+
     return dictionary
+
 
 def form_questions(questionnaire):
     """This fuction creates a questionnaire that is presetneted
@@ -90,13 +93,15 @@ def form_questions(questionnaire):
         choiceA = value[2]
         choiceB = value[3]
         neutral_choice = value[4]
-        ask = input(f"{number}. {question}:\n A. {choiceA}\n B. {choiceB}\n C. {neutral_choice}\n \nEnter The Letter Of Your Choice: ")
+        ask = input(
+            f"{number}. {question}:\n A. {choiceA}\n B. {choiceB}\n C. {neutral_choice}\n \nEnter The Letter Of Your Choice: ")
         print()
         print()
         ask = ask.upper()
         Answers.append(ask)
     # Return the dictionary.
     return Answers
+
 
 def answer(answers):
     """This function distributes the answers of a user into
@@ -108,9 +113,9 @@ def answer(answers):
     FEELER_THINKER_INDEX = (3, 4, 10, 11, 17, 18, 24, 25, 31, 32, 38, 39, 45, 46, 52, 53, 59, 60, 66, 67)
     PERCEIVER_JUDGER_INDEX = (5, 6, 12, 13, 19, 20, 26, 27, 33, 34, 40, 41, 47, 48, 54, 55, 61, 62, 68, 69)
     INTROVERT_EXTROVERT = list(map(answers.__getitem__, INTROVERT_EXTROVERT_INDEX))
-    SENSOR_INTUITIVE = list(map(answers.__getitem__,SENSOR_INTUITIVE_INDEX))
-    FEELER_THINKER = list(map(answers.__getitem__,FEELER_THINKER_INDEX))
-    PERCEIVER_JUDGER = list(map(answers.__getitem__,PERCEIVER_JUDGER_INDEX))
+    SENSOR_INTUITIVE = list(map(answers.__getitem__, SENSOR_INTUITIVE_INDEX))
+    FEELER_THINKER = list(map(answers.__getitem__, FEELER_THINKER_INDEX))
+    PERCEIVER_JUDGER = list(map(answers.__getitem__, PERCEIVER_JUDGER_INDEX))
 
     return INTROVERT_EXTROVERT, SENSOR_INTUITIVE, FEELER_THINKER, PERCEIVER_JUDGER
 
@@ -178,6 +183,7 @@ def dichotomy(E_I, S_I, T_F, J_P):
             print()
     return Introvert, Extrovert, Sensor, Intuitive, Thinker, Feeler, Judger, Perceiver
 
+
 def nomenclature(Introversion, Extraversion, Sensing, Intuition, Thinking, Feeling, Judging, Perceiving):
     """This function provides the nomenclature of personality
     to a user by using their traits"""
@@ -201,19 +207,20 @@ def nomenclature(Introversion, Extraversion, Sensing, Intuition, Thinking, Feeli
     print("              How you ◉ ‿ ◉ are:")
     print("--------------------------------------------------")
     print(f"      {Attitude}       |       {counter_att}")
-    print(f"          {Attitude_perc}%                     {100-Attitude_perc}%")
+    print(f"          {Attitude_perc}%                     {100 - Attitude_perc}%")
     print("--------------------------------------------------")
     print(f"      {Learning}       |       {counter_lea}")
-    print(f"          {Learning_perc}%                     {100-Learning_perc}%")
+    print(f"          {Learning_perc}%                     {100 - Learning_perc}%")
     print("--------------------------------------------------")
     print(f"         {Deciding}       |       {counter_dec}")
-    print(f"          {Deciding_perc}%                     {100-Deciding_perc}%")
+    print(f"          {Deciding_perc}%                     {100 - Deciding_perc}%")
     print("--------------------------------------------------")
     print(f"      {Strategy}       |       {counter_strat}")
-    print(f"          {Strategy_perc}%                     {100-Strategy_perc}%")
+    print(f"          {Strategy_perc}%                     {100 - Strategy_perc}%")
     print("--------------------------------------------------")
 
     return Attitude, Learning, Deciding, Strategy
+
 
 def personality(ATTITUDE, LEARNING, DECISION, STRATEGY):
     """This function provides the symbol name of personality
@@ -240,7 +247,7 @@ def personality(ATTITUDE, LEARNING, DECISION, STRATEGY):
         decision_symbol = "T"
 
     elif DECISION == "FEELER":
-        decision_symbol ="F"
+        decision_symbol = "F"
 
     elif DECISION == "UNKNOWN":
         decision_symbol = "X"
@@ -253,12 +260,13 @@ def personality(ATTITUDE, LEARNING, DECISION, STRATEGY):
 
     elif STRATEGY == "UNKNOWN":
         strategy_symbol = "X"
-    print(f"\nPersonality Type ʘ‿ ʘ: {attitude_symbol}{learning_symbol}{decision_symbol}{strategy_symbol}\n")    
+    print(f"\nPersonality Type ʘ‿ ʘ: {attitude_symbol}{learning_symbol}{decision_symbol}{strategy_symbol}\n")
+
 
 def cognitive_functions(ATTITUDE, LEARNING, DECISION, STRATEGY):
     """This function uses the data of personality traits to
-    decuce and provide a user with cognitive functions of 
-    they are perdisposed to have and an expalnation of these functions"""
+    deduce and provide a user with cognitive functions of
+    they are predisposed to have and an explanation of these functions"""
     print("**************************************************")
     print("✯ If you are Introverted, the cognitive function you use\nfirst is also an introverted function.")
     print()
@@ -266,30 +274,30 @@ def cognitive_functions(ATTITUDE, LEARNING, DECISION, STRATEGY):
     to_learn = "★ You use the following process to learn:"
     to_decide = "★ You use the following process to make decisions:"
     if ATTITUDE == "INTROVERT" and STRATEGY == "PERCEIVER":
-            if DECISION == "THINKER":
-                TP = "Introverted Thinking [Ti]:\n Understanding the nature of causation\nOr\nUnderstanding causation is not correlation.\n Clarity/Accuracy/Truth/Logic"
-                print(f"\n{to_decide}:")
-                print("--------------------------------------------------")
-                print(TP)
-            elif DECISION == "FEELER":
-                FP = "Introverted Feeling [Fi]:\n Understanding emotions and values of the self and acting accordingly\n Authenticity/Knowing good and bad"
-                print(f"\n{to_learn}:")
-                print("--------------------------------------------------")
-                print(FP)
-                print()
-            if LEARNING == "INTUITIVE":
-                NP = "Extroverted Intuition [Ne]:\n Using information to create something new.\n Asks 'WHAT IF?'"
-                print(f"\n{to_learn}:")
-                print("--------------------------------------------------")
-                print(NP)
-                print()
-            elif LEARNING == "OBSERVER":
-                SP = "Extroverted Sensing [Se]:\n Being ready to respond to spontaneity and surprising experience/Being physically and mentaly ready. \n Physical Sensitivity/Perpetual Observing"
-                print(f"\n{to_learn}:")
-                print("--------------------------------------------------")
-                print(SP)
-                print()
-                
+        if DECISION == "THINKER":
+            TP = "Introverted Thinking [Ti]:\n Understanding the nature of causation\nOr\nUnderstanding causation is not correlation.\n Clarity/Accuracy/Truth/Logic"
+            print(f"\n{to_decide}:")
+            print("--------------------------------------------------")
+            print(TP)
+        elif DECISION == "FEELER":
+            FP = "Introverted Feeling [Fi]:\n Understanding emotions and values of the self and acting accordingly\n Authenticity/Knowing good and bad"
+            print(f"\n{to_learn}:")
+            print("--------------------------------------------------")
+            print(FP)
+            print()
+        if LEARNING == "INTUITIVE":
+            NP = "Extroverted Intuition [Ne]:\n Using information to create something new.\n Asks 'WHAT IF?'"
+            print(f"\n{to_learn}:")
+            print("--------------------------------------------------")
+            print(NP)
+            print()
+        elif LEARNING == "OBSERVER":
+            SP = "Extroverted Sensing [Se]:\n Being ready to respond to spontaneity and surprising experience/Being physically and mentaly ready. \n Physical Sensitivity/Perpetual Observing"
+            print(f"\n{to_learn}:")
+            print("--------------------------------------------------")
+            print(SP)
+            print()
+
     elif ATTITUDE == "EXTROVERT" and STRATEGY == "PERCEIVER":
         if LEARNING == "INTUITIVE":
             NP = "Extroverted Intuition [Ne]:\n Using information to create something new.\n Asks 'WHAT IF?'"
@@ -367,7 +375,6 @@ def cognitive_functions(ATTITUDE, LEARNING, DECISION, STRATEGY):
             print("--------------------------------------------------")
             print(FJ)
     print("**************************************************")
-
 
 
 # Call main to start this program.
