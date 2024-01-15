@@ -124,18 +124,8 @@ def dichotomy(E_I, S_I, T_F, J_P):
     """This function creates a dichotomy that parses
     each list from the function answer() into specific personality
     type traits"""
-    Introvert = 0
-    Extrovert = 0
-    Neutral_E_I = 0
-    Intuitive = 0
-    Sensor = 0
-    Neutral_S_I = 0
-    Thinker = 0
-    Feeler = 0
-    Neutral_T_F = 0
-    Perceiver = 0
-    Judger = 0
-    Neutral_J_P = 0
+    Introvert, Extrovert, Neutral_E_I, Intuitive, Sensor, Neutral_S_I = 0, 0, 0, 0, 0, 0
+    Thinker, Feeler, Neutral_T_F, Perceiver, Judger, Neutral_J_P = 0, 0, 0, 0, 0, 0
 
     for result in E_I:
         if result == "A":
