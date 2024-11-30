@@ -179,7 +179,7 @@ def nomenclature(Introversion, Extraversion, Sensing, Intuition, Thinking, Feeli
     to a user by using their traits"""
     Attitude = 'INTROVERT' if Introversion > Extraversion else 'EXTROVERT'
     counter_att = "EXTROVERT" if Introversion > Extraversion else 'INTROVERT'
-    Attitude_perc = round(100 * (Introversion / 10 if Introversion > Extraversion else Extraversion / 10), 3)
+    Attitude_perc = round(100 * (Introversion / 10 if Introversion > Extraversion else Extraversion / 10), 3) #this is the problem
 
     Learning = 'OBSERVER' if Sensing > Intuition else 'INTUITIVE'
     counter_lea = 'INTUITIVE' if Sensing > Intuition else 'OBSERVER'
@@ -370,3 +370,4 @@ def cognitive_functions(ATTITUDE, LEARNING, DECISION, STRATEGY):
 # Call main to start this program.
 if __name__ == "__main__":
     main()
+# sonya 0795028511 0793107245
