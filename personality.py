@@ -370,4 +370,3 @@ def cognitive_functions(ATTITUDE, LEARNING, DECISION, STRATEGY):
 # Call main to start this program.
 if __name__ == "__main__":
     main()
-# sonya 0795028511 0793107245
